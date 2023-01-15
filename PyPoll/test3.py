@@ -22,9 +22,13 @@ with open(csvpath) as csvfile:
     for row in csvreader:
         ballots.append(row[0])
         if row[2] not in unique_list_of_candidates:
-          dictionary["Name"].append(row[2])
-          dictionary["VoteCount"].append(1)
-        print(dictionary)
+          unique_list_of_candidates.append(row[2])
+          vote_count_for_candidate[unique_list_of_candidates]=0
+        vote_count_for_candidate[unique_list_of_candidates] = vote_count_for_candidate[unique_list_of_candidates]+ 1
+
+          
+    
         #Total number of votes cast
     print(f"Total Votes: " ,len(ballots))
     print("-------------------------")
+    print

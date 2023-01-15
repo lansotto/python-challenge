@@ -54,7 +54,8 @@ with open(csvpath) as csvfile:
     for unique_list_of_candidates in ziplist:
         output = (f'{unique_list_of_candidates[0]}: {unique_list_of_candidates[1]} ({unique_list_of_candidates[2]})')
         print(output)
-    print()
+        
+        print()
     print("-------------------------")
     print()
     print(last_text)
@@ -72,7 +73,8 @@ with open(csvpath) as csvfile:
         textfile.write("\n")
         textfile.write("----------------------------\n")
         textfile.write("\n")
-        #textfile.write(output1+"\n")
+        for i in range(len(unique_list_of_candidates)):
+            txt.write(f'{unique_list_of_candidates[i]}')
         textfile.write("\n")
         #textfile.write(line3+"\n")
         textfile.write("\n")
