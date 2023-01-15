@@ -48,22 +48,24 @@ with open(csvpath) as csvfile:
     #find the largest value from the list of votes
     max_value = max(number_of_votes)
     voteindex = number_of_votes.index(max_value)
-    last_text = "Winner: " + str(unique_list_of_candidates[voteindex])
-   
-    ziplist = zip(unique_list_of_candidates, percent, number_of_votes)
-    for unique_list_of_candidates in ziplist:
-        output = (f'{unique_list_of_candidates[0]}: {unique_list_of_candidates[1]} ({unique_list_of_candidates[2]})')
-        print(output)
+    
+    #list the candidates, their vote percentage and number of votes
+    for i in range(len(unique_list_of_candidates)):
+        print(f'{unique_list_of_candidates[i]}: {percent[i]} ({number_of_votes[i]})')
+        print()
     print()
     print("-------------------------")
     print()
+    last_text = "Winner: " + str(unique_list_of_candidates[voteindex])
     print(last_text)
     print()
     print("-------------------------")
 
+
 #create txt file and write the same results to it
     output_path = os.path.join("..", "PyPoll", "analysis", "results.txt")
     with open(output_path, 'w') as textfile:
+        textfile.write("\n")
         textfile.write("Election Results\n")
         textfile.write("\n")
         textfile.write("----------------------------\n")
@@ -72,11 +74,10 @@ with open(csvpath) as csvfile:
         textfile.write("\n")
         textfile.write("----------------------------\n")
         textfile.write("\n")
-        #textfile.write(output1+"\n")
-        textfile.write("\n")
-        #textfile.write(line3+"\n")
-        textfile.write("\n")
-        #textfile.write(line4+"\n")
+        for i in range(len(unique_list_of_candidates)):
+            textfile.write(f'{unique_list_of_candidates[i]}: {percent[i]} ({number_of_votes[i]})')
+            textfile.write("\n")
+            textfile.write("\n")
         textfile.write("\n")
         textfile.write("----------------------------\n")
         textfile.write("\n")
